@@ -6,7 +6,6 @@ describe('test actual API requests', () => {
     cy.get('button').click();
     cy.get('.movie').should('be.greaterThan', 0);
     cy.get('#movie-container .movie h3').contains('Star Wars: Episode I - The Phantom Menace').should('exist');
-    
   })
 
 })
