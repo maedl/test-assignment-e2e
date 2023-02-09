@@ -16,5 +16,28 @@ describe('landing page renders correctly', () => {
     cy.get('button').contains('Sök').should('exist');
   })
 
+})
 
+describe('usage tests', () => {
+  it('should be able to type into text input', () => {
+    cy.get('input#searchText').type('A new hope').should('have.value', 'A new hope');
+  })
+
+  it('should show no results text', () => {
+    cy.intercept('GET', 'http://omdbapi.com/*', { fixture: 'emptyResonse.json' });
+    cy.get('input#searchText').should('have.value', '');
+    cy.get('button').click();
+    cy.get('p').contains('Inga sökresultat att visa').should('exist');
+  })
+
+
+  it('should show search result correctly', () => {
+    cy.intercept('GET', 'http://omdbapi.com/*', { fixture: 'emptyResonse.json' }).as('mockResponse');
+    cy.get('input#searchText').type('A new hope');
+    cy.get('input#searchText').should('have.value', 'A new hope');
+    cy.get('button').click();
+    cy.wait('@mockResponse').its('request.url').should('contain', 'A%20new%20hope');
+    cy.get('p').contains('Inga sökresultat att visa').should('exist');
+  })
+ 
 })
