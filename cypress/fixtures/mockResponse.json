@@ -1,0 +1,23 @@
+{
+  "Search": [{  
+    "Title": "A new hope",
+    "imdbID": "IV",
+    "Type": "string",
+    "Poster": "https://url-a-new.jpg",
+    "Year": "string"
+  }, 
+  {  
+    "Title": "The empire strikes back",
+    "imdbID": "V",
+    "Type": "string",
+    "Poster": "https://url-the-empire.jpg",
+    "Year": "string"
+  }, 
+  {
+    "Title": "Return of the Jedi",
+    "imdbID": "VI",
+    "Type": "string",
+    "Poster": "https://url-return-of.jpg",
+    "Year": "string"
+  }]
+}
